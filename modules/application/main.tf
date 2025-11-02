@@ -21,7 +21,7 @@ locals {
                 <head><title>Instance Info</title></head>
                 <body>
                   <h1>Instance Info</h1>
-                  <p>This message was generated on instance ${COMPUTE_INSTANCE_ID} with the following UUID ${COMPUTE_MACHINE_UUID}</p>
+                  <p>This message was generated on instance $${COMPUTE_INSTANCE_ID} with the following UUID $${COMPUTE_MACHINE_UUID}</p>
                 </body>
               </html>
               HTML
@@ -70,17 +70,13 @@ resource "aws_lb_target_group" "app_tg" {
   name     = "${var.name_prefix}-tg"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = data.aws_vpc.current.id
+  vpc_id   = data.aws_vpc.from_subnet.id
 
   health_check {
     path     = "/"
     port     = "80"
     protocol = "HTTP"
   }
-}
-
-data "aws_vpc" "current" {
-  id = element(var.subnet_ids, 0) != "" ? cidrhost(aws_subnet_placeholder.this.cidr_block, 1) : ""
 }
 
 # Because we do not create a full VPC resource inside this module, we need a VPC id.
