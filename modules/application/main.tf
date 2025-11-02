@@ -158,7 +158,3 @@ resource "aws_autoscaling_group" "app_asg" {
 #   lb_target_group_arn    = aws_lb_target_group.app_tg_correct.arn
 # }
 
-# Output
-output "load_balancer_dns" {
-  value = aws_lb.alb.dns_name
-}
