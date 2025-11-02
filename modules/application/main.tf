@@ -119,9 +119,9 @@ resource "aws_lb_listener" "listener" {
 # Auto Scaling Group
 resource "aws_autoscaling_group" "app_asg" {
   name                = "${var.name_prefix}-asg"
-  max_size            = var.max_size
-  min_size            = var.min_size
-  desired_capacity    = var.desired_capacity
+  max_size            = 2
+  min_size            = 2
+  desired_capacity    = 2
   vpc_zone_identifier = var.subnet_ids
   launch_template {
     id      = aws_launch_template.lt.id
