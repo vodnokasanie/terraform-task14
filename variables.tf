@@ -24,7 +24,7 @@ variable "public_subnets" {
 }
 
 variable "allowed_ip_range" {
-  type = list(string)
+  type        = list(string)
   description = "List of CIDR ranges allowed for SSH/HTTP access"
 }
 
