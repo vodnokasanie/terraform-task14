@@ -1,9 +1,3 @@
-variable "name_prefix" {}
-variable "vpc_id" {}
-variable "allowed_ip_range" {
-  type = list(string)
-}
-
 # SSH Security Group
 resource "aws_security_group" "ssh" {
   name        = "${var.name_prefix}-ssh-sg"

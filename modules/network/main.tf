@@ -1,8 +1,3 @@
-variable "name_prefix" {}
-variable "vpc_cidr" {}
-variable "public_subnets" {
-  type = map(string)
-}
 
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr

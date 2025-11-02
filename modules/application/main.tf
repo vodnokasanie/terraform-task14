@@ -1,27 +1,3 @@
-variable "name_prefix" {}
-variable "subnet_ids" {
-  type = list(string)
-}
-variable "ssh_sg_id" {}
-variable "public_http_sg_id" {}
-variable "private_http_sg_id" {}
-variable "instance_type" {
-  type    = string
-  default = "t3.micro"
-}
-variable "desired_capacity" {
-  type    = number
-  default = 2
-}
-variable "min_size" {
-  type    = number
-  default = 2
-}
-variable "max_size" {
-  type    = number
-  default = 2
-}
-
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
