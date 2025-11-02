@@ -1,0 +1,9 @@
+variable "name_prefix" { type = string }
+variable "subnet_ids" { type = list(string) }
+variable "ssh_sg_id" { type = string }
+variable "public_http_sg_id" { type = string }
+variable "private_http_sg_id" { type = string }
+variable "instance_type" { type = string }
+variable "desired_capacity" { type = number }
+variable "min_size" { type = number }
+variable "max_size" { type = number }
