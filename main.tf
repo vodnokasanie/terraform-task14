@@ -19,7 +19,7 @@ module "network_security" {
   allowed_ip_range = var.allowed_ip_range
 }
 
-module "app" {
+module "application" {
   source      = "./modules/application"
   name_prefix = var.name_prefix
 
