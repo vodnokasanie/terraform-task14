@@ -14,6 +14,3 @@ variable "public_subnets" {
 }
 
 
-
-data "aws_availability_zones" "available" {}
-
