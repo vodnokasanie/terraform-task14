@@ -138,13 +138,11 @@ resource "aws_autoscaling_group" "app_asg" {
     ]
   }
 
-  tags = [
-    {
-      key                 = "Name"
-      value               = "${var.name_prefix}-asg-instance"
-      propagate_at_launch = true
-    }
-  ]
+    tag {
+    key                 = "Name"
+    value               = "${var.name_prefix}-asg-instance"
+    propagate_at_launch = true
+  }
 }
 
 # Optionally attach using aws_autoscaling_attachment — note: attaching via ASG target_group_arns is the current recommended way for ALB.
