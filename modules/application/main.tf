@@ -6,19 +6,19 @@ variable "ssh_sg_id" {}
 variable "public_http_sg_id" {}
 variable "private_http_sg_id" {}
 variable "instance_type" {
-  type = string
+  type    = string
   default = "t3.micro"
 }
 variable "desired_capacity" {
-  type = number
+  type    = number
   default = 2
 }
 variable "min_size" {
-  type = number
+  type    = number
   default = 2
 }
 variable "max_size" {
-  type = number
+  type    = number
   default = 2
 }
 
@@ -73,7 +73,7 @@ resource "aws_launch_template" "lt" {
 
   tag_specifications {
     resource_type = "instance"
-    tags = { Name = "${var.name_prefix}-instance" }
+    tags          = { Name = "${var.name_prefix}-instance" }
   }
 }
 
@@ -97,8 +97,8 @@ resource "aws_lb_target_group" "app_tg" {
   vpc_id   = data.aws_vpc.current.id
 
   health_check {
-    path = "/"
-    port = "80"
+    path     = "/"
+    port     = "80"
     protocol = "HTTP"
   }
 }
@@ -125,8 +125,8 @@ resource "aws_lb_target_group" "app_tg_correct" {
   vpc_id   = data.aws_vpc.from_subnet.id
 
   health_check {
-    path = "/"
-    port = "80"
+    path     = "/"
+    port     = "80"
     protocol = "HTTP"
   }
 
@@ -146,11 +146,11 @@ resource "aws_lb_listener" "listener" {
 
 # Auto Scaling Group
 resource "aws_autoscaling_group" "app_asg" {
-  name                      = "${var.name_prefix}-asg"
-  max_size                  = var.max_size
-  min_size                  = var.min_size
-  desired_capacity          = var.desired_capacity
-  vpc_zone_identifier       = var.subnet_ids
+  name                = "${var.name_prefix}-asg"
+  max_size            = var.max_size
+  min_size            = var.min_size
+  desired_capacity    = var.desired_capacity
+  vpc_zone_identifier = var.subnet_ids
   launch_template {
     id      = aws_launch_template.lt.id
     version = "$Latest"
